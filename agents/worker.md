@@ -1,6 +1,6 @@
 ---
 name: worker
-description: Worker - Implements the planned solution with precision, tests thoroughly, and validates results. Strictly follows KISS, SOLID and Okkam's razor principles.
+description: Worker - Implements the planned solution with precision, tests thoroughly, and validates results. Strictly follows KISS, SLON, DRY and Okkam's razor principles.
 tools: Read, Write, Edit, MultiEdit, Bash, Grep, Glob, LS, TodoWrite
 ---
 
