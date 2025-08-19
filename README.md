@@ -156,11 +156,11 @@ ULTRATHINK is an advanced multi-agent coordination approach that maximizes paral
 
 ### USAGE EXAMPLE
 
-> Use multiple, simultaneous scanner subagents to search, analyze, collect and extract information from code and the internet
-> Use project-planner subagent for thorough planning, creating step-by-step plans, with maximum details and phases  
-> Use multiple, simultaneous, parallel worker subagents to execute the plan
-> ULTRATHINK
-> {USER_PROMPT}
+First of all, use multiple, simultaneous scanner subagents to search, analyze, collect and extract information from code and the internet
+Scondly, use project-planner subagent for thorough planning, creating step-by-step plans, with maximum details and phases
+Finally, use multiple, simultaneous, parallel worker subagents to execute the plan  
+ULTRATHINK
+{USER_PROMPT}
 
 ### Practical Implementation
 
@@ -287,27 +287,15 @@ All agents follow these foundational principles:
 5. **Worker executes** with precision and quality focus
 6. **Refactor PROACTIVELY** when files exceed 500 lines (automatic trigger)
 
-### Agent Selection Guide
-
-| Scenario                        | Recommended Agent | Reason                                         |
-| ------------------------------- | ----------------- | ---------------------------------------------- |
-| Understanding existing codebase | Scanner           | Comprehensive analysis without bias            |
-| Planning new feature            | Project Planner   | Strategic multi-step planning                  |
-| Architecture decisions          | Architect         | Design expertise and SLON principles           |
-| Documenting requirements        | PRD Writer        | Structured requirement documentation           |
-| Implementing solutions          | Worker            | Precise execution and quality                  |
-| Large file optimization         | Refactor          | Automatic for >500 lines                       |
-| Verifying task completion       | Auditor           | Comprehensive validation and quality assurance |
+**💡 Need help choosing?** Use the [Decision Trees Guide](DECISION_TREES.md) for detailed selection flowcharts and scenario-based selection matrices.
 
 ## Getting Started
 
-1. **Identify your task type** using the agent selection guide
-2. **Start with analysis** (Scanner) for complex scenarios
-3. **Plan strategically** (Project Planner/Architect) for significant changes
-4. **Document requirements** (PRD Writer) for new features
-5. **Implement precisely** (Worker) following the plan
-6. **Optimize continuously** (Refactor) as code grows
-7. **Verify completion** (Auditor) to ensure quality and requirement fulfillment before considering the task finished
+1. **Identify your task type** using the [Agent Selection Guide](DECISION_TREES.md)
+2. **Document requirements** (PRD Writer) for new features
+3. **Implement precisely** (Worker) following the plan
+4. **Optimize continuously** (Refactor) as code grows
+5. **Verify completion** (Auditor) to ensure quality and requirement fulfillment before considering the task finished
 
 ## Agent Tools and Capabilities
 
