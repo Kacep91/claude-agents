@@ -191,37 +191,6 @@ graph TD
     M --> N
 ```
 
-### Multi-Agent Coordination Example
-
-```python
-# ULTRATHINK coordination pattern
-async def ultrathink_workflow(complex_task):
-    # Phase 1: Parallel Information Gathering
-    scanner_tasks = await asyncio.gather(
-        scanner_agent_1.analyze_codebase(task.codebase),
-        scanner_agent_2.check_dependencies(task.dependencies),
-        scanner_agent_3.review_docs(task.documentation),
-        scanner_agent_4.research_external(task.requirements)
-    )
-
-    # Phase 2: Comprehensive Planning
-    comprehensive_plan = await project_planner.create_detailed_plan(
-        scanner_results=scanner_tasks,
-        complexity_level="maximum_detail",
-        phases="multi_step_breakdown"
-    )
-
-    # Phase 3: Parallel Execution
-    execution_results = await asyncio.gather(
-        worker_agent_1.implement_core(comprehensive_plan.phase_1),
-        worker_agent_2.handle_testing(comprehensive_plan.phase_2),
-        worker_agent_3.update_docs(comprehensive_plan.phase_3),
-        worker_agent_4.integrate_systems(comprehensive_plan.phase_4)
-    )
-
-    return synchronized_completion(execution_results)
-```
-
 ### Best Practices for Multi-Agent Coordination
 
 #### 1. **Information Gathering Phase**
