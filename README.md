@@ -270,13 +270,13 @@ All agents follow these foundational principles:
 
 Each agent comes with specialized tools optimized for their role:
 
-- **Scanner**: 35 tools including Figma API integration, Context7 library access, full Playwright browser automation (25 tools), IDE integration, plus comprehensive file analysis and search capabilities
-- **Project Planner**: 32 tools including IDE integration, Context7 library access, full Playwright browser automation, comprehensive research and documentation tools
+- **Scanner**: 36 tools including Figma API integration, Context7 library access, full Playwright browser automation (25 tools), IDE integration, plus comprehensive file analysis and search capabilities
+- **Project Planner**: 5 tools (Read, LS, Grep, Glob, TodoWrite)
 - **Architect**: 7 tools focused on quick analysis (Bash, Grep, LS, WebSearch, TodoWrite, NotebookRead, Glob) for architectural assessment and documentation
 - **PRD Writer**: 8 tools for research and documentation (Task, Bash, Grep, LS, Read, Write, WebSearch, Glob)
 - **Worker**: 9 implementation-focused tools (Read, Write, Edit, MultiEdit, Bash, Grep, Glob, LS, TodoWrite) for precise code execution
-- **Refactor**: 4 specialized tools (Read, Edit, Bash, Grep) for code analysis and restructuring
-- **Auditor**: Comprehensive quality verification tools (Read, Grep, Glob) plus extensive analysis capabilities for thorough task completion validation
+- **Refactor**: 7 specialized tools (Read, Edit, Bash, Grep, Glob, LS, TodoWrite)
+- **Auditor**: 7 comprehensive verification tools (Read, Grep, Glob, LS, Bash, mcp__ide__getDiagnostics, TodoWrite)
 
 ## License
 

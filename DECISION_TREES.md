@@ -41,11 +41,14 @@ Problem/Task Input
 3. Optional: **AUDITOR** → Verify completion
 
 ### Complex Tasks (5+ steps)
-**Full ULTRATHINK Methodology:**
+**Strategic Analysis Methodology:**
 1. **SCANNER** → Comprehensive analysis
-2. **PLANNER** → Break down into phases
-3. Multiple specialized agents → Execute phases
-4. **AUDITOR** → Final verification
+2. **ARCHITECT** → Design solution architecture (for complex systems)
+3. **PLANNER** → Strategic task organization (limited to analysis and TODO creation)
+4. Multiple specialized agents → Execute phases
+5. **AUDITOR** → Final verification
+
+**Note**: PLANNER has limited execution tools (Read, LS, Grep, Glob, TodoWrite) - use ARCHITECT for complex design decisions.
 
 ### Enterprise/Critical Tasks
 **Maximum rigor:**
@@ -107,11 +110,13 @@ SCANNER → Primary Agent → AUDITOR
 
 #### Complex (10+ files, 500+ lines)
 ```
-SCANNER → ARCHITECT/PLANNER → Multiple Agents → AUDITOR
+SCANNER → ARCHITECT → [PLANNER] → Multiple Agents → AUDITOR
 ├── New system → SCANNER → ARCHITECT → PLANNER → WORKER → AUDITOR
 ├── Major refactor → SCANNER → ARCHITECT → REFACTOR → WORKER → AUDITOR
-└── System integration → SCANNER → PLANNER → WORKER → PRD WRITER → AUDITOR
+└── System integration → SCANNER → ARCHITECT → WORKER → PRD WRITER → AUDITOR
 ```
+
+**Note**: PLANNER optional for complex tasks - use when strategic task organization needed, not for technical decisions
 
 #### Enterprise (Multiple systems, 1000+ lines)
 ```
@@ -124,8 +129,11 @@ SCANNER → ARCHITECT → PLANNER → [WORKER + REFACTOR] → PRD WRITER → AUD
 #### Web Development
 - **Frontend UI**: SCANNER → WORKER
 - **Backend API**: SCANNER → ARCHITECT → WORKER
-- **Full-stack**: SCANNER → PLANNER → WORKER → AUDITOR
+- **Full-stack**: SCANNER → ARCHITECT → WORKER → AUDITOR
 - **Performance**: SCANNER → REFACTOR → AUDITOR
+- **Web Testing**: SCANNER (Playwright automation) → WORKER
+- **Design Implementation**: SCANNER (Figma analysis) → ARCHITECT → WORKER
+- **UI/UX Analysis**: SCANNER (web screenshots + Figma comparison) → PRD WRITER
 
 #### Data Science
 - **Data analysis**: SCANNER → WORKER
@@ -142,8 +150,24 @@ SCANNER → ARCHITECT → PLANNER → [WORKER + REFACTOR] → PRD WRITER → AUD
 #### System Architecture
 - **Design**: ARCHITECT → PRD WRITER
 - **Migration**: SCANNER → ARCHITECT → PLANNER → WORKER
-- **Integration**: SCANNER → PLANNER → WORKER → AUDITOR
+- **Integration**: SCANNER → ARCHITECT → WORKER → AUDITOR
 - **Optimization**: SCANNER → REFACTOR → AUDITOR
+
+#### Web-Based Analysis & Automation
+- **UI Testing**: SCANNER (Playwright) → WORKER (test implementation)
+- **Design System Audit**: SCANNER (Figma + web screenshots) → PRD WRITER
+- **Cross-browser Testing**: SCANNER (Playwright multi-browser) → AUDITOR
+- **Performance Analysis**: SCANNER (web metrics + network) → REFACTOR
+- **Accessibility Testing**: SCANNER (automated accessibility) → WORKER
+- **Library Integration**: SCANNER (Context7 research) → ARCHITECT → WORKER
+- **Design-to-Code**: SCANNER (Figma analysis) → ARCHITECT → WORKER
+- **User Flow Analysis**: SCANNER (Playwright recording) → PRD WRITER
+
+#### Research & Documentation
+- **Library Evaluation**: SCANNER (Context7 + web research) → PRD WRITER
+- **API Documentation**: SCANNER (Context7) → PRD WRITER
+- **Design System Documentation**: SCANNER (Figma analysis) → PRD WRITER
+- **Competitive Analysis**: SCANNER (web automation) → PRD WRITER
 
 ### By Team Size
 
@@ -178,8 +202,15 @@ SCANNER → ARCHITECT → PLANNER → [WORKER + REFACTOR] → PRD WRITER → AUD
 - ❌ Creating entirely new projects from scratch
 - ❌ Quick bug fixes in familiar code
 - ❌ Emergency/hotfix situations
+- ❌ When you don't need web automation, Figma analysis, or library research
 
 **Instead:** Go directly to WORKER for simple implementations
+
+**Enhanced SCANNER Capabilities:**
+- ✅ **Web Automation**: Playwright browser testing, screenshot analysis, form interaction
+- ✅ **Figma Integration**: Design file analysis, asset extraction, design system inspection
+- ✅ **Library Research**: Context7 integration for documentation and API exploration
+- ✅ **IDE Integration**: Diagnostic analysis, error detection, development environment insights
 
 ### PLANNER Anti-patterns  
 **Don't use PLANNER when:**
@@ -187,8 +218,11 @@ SCANNER → ARCHITECT → PLANNER → [WORKER + REFACTOR] → PRD WRITER → AUD
 - ❌ Well-defined, straightforward work
 - ❌ Emergency fixes
 - ❌ Simple documentation updates
+- ❌ Complex code execution tasks (limited to 5 basic tools: Read, LS, Grep, Glob, TodoWrite)
+- ❌ Heavy file manipulation or code generation (use WORKER instead)
+- ❌ Tasks requiring extensive codebase modifications
 
-**Instead:** Use WORKER for direct implementation
+**Instead:** Use WORKER for direct implementation, ARCHITECT for complex design decisions
 
 ### WORKER Anti-patterns
 **Don't use WORKER when:**
@@ -260,11 +294,11 @@ Critical task? Add AUDITOR last
 
 | Task Type | Simple | Moderate | Complex | Enterprise |
 |-----------|--------|----------|---------|------------|
-| **Bug Fix** | WORKER | SCANNER→WORKER | SCANNER→WORKER→AUDITOR | SCANNER→PLANNER→WORKER→AUDITOR |
-| **New Feature** | WORKER | SCANNER→WORKER→AUDITOR | SCANNER→PLANNER→WORKER→AUDITOR | SCANNER→ARCHITECT→PLANNER→WORKER→AUDITOR |
+| **Bug Fix** | WORKER | SCANNER→WORKER | SCANNER→WORKER→AUDITOR | SCANNER→ARCHITECT→WORKER→AUDITOR |
+| **New Feature** | WORKER | SCANNER→WORKER→AUDITOR | SCANNER→ARCHITECT→WORKER→AUDITOR | SCANNER→ARCHITECT→PLANNER→WORKER→AUDITOR |
 | **Refactoring** | REFACTOR | SCANNER→REFACTOR | SCANNER→REFACTOR→AUDITOR | SCANNER→ARCHITECT→REFACTOR→AUDITOR |
 | **Documentation** | PRD WRITER | SCANNER→PRD WRITER | SCANNER→PRD WRITER→AUDITOR | SCANNER→PRD WRITER→AUDITOR |
-| **Architecture** | ARCHITECT | SCANNER→ARCHITECT→WORKER | SCANNER→ARCHITECT→PLANNER→WORKER | Full ULTRATHINK |
+| **Architecture** | ARCHITECT | SCANNER→ARCHITECT→WORKER | SCANNER→ARCHITECT→WORKER→AUDITOR | Full ULTRATHINK |
 
 ### Common Scenario Shortcuts
 
@@ -275,8 +309,10 @@ Critical task? Add AUDITOR last
 
 #### "I want to add a feature"  
 - **Simple feature**: WORKER
-- **Medium feature**: SCANNER → PLANNER → WORKER
+- **Medium feature**: SCANNER → ARCHITECT → WORKER
 - **Major feature**: SCANNER → ARCHITECT → PLANNER → WORKER → AUDITOR
+
+**Note**: Use ARCHITECT before PLANNER for features requiring system design decisions
 
 #### "My code is messy"
 - **Small file**: WORKER (for cleanup)
@@ -340,6 +376,39 @@ SCANNER → ARCHITECT → REFACTOR → WORKER → AUDITOR
 
 ---
 
+## PLANNER TOOL LIMITATIONS & ALTERNATIVES
+
+**When PLANNER's 5 tools (Read, LS, Grep, Glob, TodoWrite) are insufficient:**
+
+### Use ARCHITECT instead for:
+- ❌ Complex system design decisions
+- ❌ Architecture pattern selection
+- ❌ Technology stack recommendations
+- ❌ Integration strategy planning
+- ❌ Database schema design
+
+### Use WORKER instead for:
+- ❌ Code generation and modification
+- ❌ File creation and complex edits
+- ❌ Build system configuration
+- ❌ Package management tasks
+- ❌ Test implementation
+
+### Use SCANNER for enhanced analysis:
+- ❌ Web automation and testing
+- ❌ Figma design analysis
+- ❌ Library research and documentation
+- ❌ IDE diagnostics and error analysis
+
+**PLANNER Optimal Use Cases:**
+- ✅ Strategic task breakdown from SCANNER data
+- ✅ Todo list creation and organization
+- ✅ Dependency mapping and sequencing
+- ✅ Resource allocation planning
+- ✅ Timeline estimation and milestone planning
+
+---
+
 ## KEY PRINCIPLES FOR AGENT SELECTION
 
 1. **SLON First** - Don't over-engineer simple tasks
@@ -347,5 +416,6 @@ SCANNER → ARCHITECT → REFACTOR → WORKER → AUDITOR
 3. **Right Tool, Right Job** - Match agent expertise to task type
 4. **Quality Gates** - Use AUDITOR for critical/complex work
 5. **Iterative Approach** - Start simple, add complexity only if needed
+6. **Tool Constraints Matter** - Consider each agent's actual tool limitations
 
-**Remember**: It's better to use one agent well than to use multiple agents poorly. When in doubt, start with SCANNER to understand the landscape, then choose your primary agent.
+**Remember**: It's better to use one agent well than to use multiple agents poorly. PLANNER has only 5 basic tools - use ARCHITECT for technical decisions, WORKER for implementation. When in doubt, start with SCANNER to understand the landscape.
