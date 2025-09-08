@@ -1,5 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
 # [PROJECT_NAME]
 
 [Brief project description in 1-2 sentences]
@@ -13,7 +11,7 @@
 3. Do what has been asked; nothing more, nothing less.
 4. NEVER create files unless they're absolutely necessary for achieving your goal.
 5. ALWAYS prefer editing an existing file to creating a new one.
-6. NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.
+6. NEVER proactively create documentation files (\*.md) or README files. Only create documentation files if explicitly requested by the User.
 7. ADDITIONAL INFO ON PROJECT CAN BE FOUND IN [./docs or other folder]
 8. PROJECT STRUCTURE IS IN ./PROJECT_STRUCTURE.md
 
@@ -23,22 +21,22 @@ One CLI command > Multiple tool calls
 
     1. Pattern Search:
     - rg -n "pattern" --glob '!node_modules/*' instead of multiple Grep calls
-    
+
     2. File Finding:
     - fd filename or fd .ext directory instead of Glob tool
-    
+
     3. File Preview:
     - bat -n filepath for syntax-highlighted preview with line numbers
-    
+
     4. Bulk Refactoring:
     - rg -l "pattern" | xargs sed -i 's/old/new/g' for mass replacements
-    
+
     5. Project Structure:
     - tree -L 2 directories for quick overview
-    
+
     6. JSON Inspection:
     - jq '.key' file.json for quick JSON parsing
-    
+
 ## 🏗️ Project Stack
 
 - **[Main language/framework]** - [description]
@@ -50,7 +48,6 @@ One CLI command > Multiple tool calls
 - **[Testing]** - [framework and approach]
 - **[Runtime]** - [Node.js/Deno/Bun version]
 
-
 ## 🏛️ Architectural Principles
 
 **"As simple as possible, but not simpler"**
@@ -60,7 +57,6 @@ One CLI command > Multiple tool calls
 - **Documentation = part of code**: architectural decisions are recorded in code and comments
 - **No premature optimization**
 - **100% certainty**: evaluate cascading effects before changes
-
 
 ## 🚨 Code Quality Standards
 
@@ -73,13 +69,12 @@ No errors. No formatting issues. No compiler warnings.
 - Decomposition: break tasks into subtasks
 - Cascading effects: evaluate impact of changes
 
-
 ## 🎯 Main Project Features
 
 1. **[Feature 1]** - [description]
 2. **[Feature 2]** - [description]
 3. **[Feature 3]** - [description]
-[Add as needed]
+   [Add as needed]
 
 ## 📁 Project Structure
 
@@ -120,7 +115,6 @@ Run check: `[check commands: lint, test, build]`
 - **Early returns** to reduce nesting
 - **Error handling** explicit and clear
 
-
 ## 📊 Implementation Standards
 
 ### Code is considered ready when:
@@ -133,7 +127,6 @@ Run check: `[check commands: lint, test, build]`
 - ✓ Old/unused code removed
 - ✓ Code is understandable to junior developer
 
-
 ### Testing Strategy
 
 - Unit tests for functions and modules
@@ -141,14 +134,12 @@ Run check: `[check commands: lint, test, build]`
 - E2E tests for critical functionality (if applicable)
 - Critical functionality → write tests first
 
-
 ### **Security always**:
 
 - Validate all external data
 - Don't store sensitive data openly
 - Use HTTPS/TLS for communication
 - Escape user input
-
 
 ## 📘 Code Pattern Examples
 
@@ -158,7 +149,6 @@ Run check: `[check commands: lint, test, build]`
 // Add characteristic project code example
 // that demonstrates main patterns
 ```
-
 
 ## 🛠️ Development Commands
 
@@ -170,7 +160,6 @@ Run check: `[check commands: lint, test, build]`
 - `[lint command]` - Check code quality
 - `[format command]` - Format code
 
-
 ### Additional commands
 
 [Add project-specific commands]
@@ -181,7 +170,6 @@ Run check: `[check commands: lint, test, build]`
 - **API/Backend**: `[URL and port if applicable]`
 - **Hot reloading**: [enabled/disabled]
 
-
 ## 🌟 Key Project Features
 
 ### [Feature 1]
@@ -190,13 +178,12 @@ Run check: `[check commands: lint, test, build]`
 - Important dependencies
 - Integration points
 
-
 ### [Feature 2]
 
 - Project-specific details
 - Important to know during development
 
-***
+---
 
 ## 📝 Template Adaptation Instructions
 

@@ -1,8 +1,6 @@
 A Brief Guide to Setting Up Claude Code from Scratch and How to Use It Effectively for Acceptable Results (80-90% Success Rate)
 
-1. First, you need to configure CLAUDE.md from scratch (using the /init command in the project root). This file is attached to every request and, according to developers, is designed to reduce misunderstanding and enrich queries with project context. In reality - Claude Code very often IGNORES this file or forgets it very quickly as the context grows and eventually starts acting strange (time to create a new chat).
-
-I created a template that you place in the project folder and write in Claude Code "Make changes to @CLAUDE.md so it matches my project. Follow the template principles KISS, Occam's razor, DRY, YAGNI" (see attached file)
+1. First, take the CLAUDE_TEMPLATE_EN.md file and place it in your project directory. Rename it to CLAUDE.md, then run Claude Code with the prompt: "Fill in all placeholders in @CLAUDE.md to match my project. Follow the template principles KISS, Occam's razor, DRY, YAGNI". This file is attached to every request and, according to developers, is designed to reduce misunderstanding and enrich queries with project context. In reality - Claude Code very often IGNORES this file or forgets it very quickly as the context grows and eventually starts acting strange (time to create a new chat).
 
 I created a template for PROJECT_STRUCTURE.md (speeds up project understanding and reduces time for "searching" files and functions)
 Prompt for it:
@@ -65,11 +63,20 @@ Stage 1:
    Add to our DB for this hotel information with AI analysis (additional column)
    Add to our DB the generated xlsx file
 
-In the second case, we use either plan mode in Claude Code (if not too complex in our opinion), or full flow with agents, like:
+In the second case, we use either plan mode in Claude Code (if not too complex in our opinion), or full flow with agents. You have two options:
 
-First of all, use multiple, simultaneous scanner subagents to search, analyze, collect and extract information from code and the internet
-Secondly, use project-planner subagent for thorough planning, creating step-by-step plans, with maximum details and phases
-Finally, use multiple, simultaneous, parallel worker subagents to execute the plan
+Option 1 (Standard flow):
+Write your prompt and add: "First, use scanner to gather information and then use project-planner to make up the plan"
+- Scanner subagents will search, analyze, collect and extract information from code and the internet
+- Project-planner subagent will create thorough step-by-step plans with maximum details and phases
+- Multiple, simultaneous, parallel worker subagents will execute the plan
+
+Option 2 (Plan mode flow):
+Write your prompt in PLAN MODE and add: "First, use scanner to gather information needed and then create a plan with to-do for all workers"
+- Scanner subagents will gather all necessary information
+- You create the plan with to-do items directly (without project-planner)
+- Worker subagents execute based on the to-do plan
+
 ULTRATHINK
 
 @src/components/BullshitComponent/index.tsx

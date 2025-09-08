@@ -1,5 +1,3 @@
-<img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" style="height:64px;margin-right:32px"/>
-
 # Project Structure [PROJECT_NAME]
 
 > **Architectural map of the project for AI agents and developers**
@@ -16,7 +14,6 @@ The project is a **[ARCHITECTURE_TYPE]** based on **[MAIN_STACK]** with [ARCHITE
 - **Testing**: [TESTING_STACK]
 - **[ADDITIONAL_STACK_CATEGORY]**: [ADDITIONAL_STACK_DESCRIPTION]
 
-
 ## 📁 Directory Structure
 
 ### Root Directory
@@ -30,7 +27,6 @@ The project is a **[ARCHITECTURE_TYPE]** based on **[MAIN_STACK]** with [ARCHITE
 ├── [TEST_CONFIG]            # Test configuration
 └── [DOCS_FOLDER]/          # Documentation
 ```
-
 
 ### Source Code (`[SOURCE_FOLDER]/`)
 
@@ -49,7 +45,6 @@ The project is a **[ARCHITECTURE_TYPE]** based on **[MAIN_STACK]** with [ARCHITE
 └── [TESTS_CONFIG]         # Test settings
 ```
 
-
 ### Resources and Static Files
 
 ```
@@ -63,7 +58,6 @@ The project is a **[ARCHITECTURE_TYPE]** based on **[MAIN_STACK]** with [ARCHITE
 └── (generated automatically)
 ```
 
-
 ### Auxiliary Directories
 
 ```
@@ -74,7 +68,6 @@ The project is a **[ARCHITECTURE_TYPE]** based on **[MAIN_STACK]** with [ARCHITE
 [ADDITIONAL_DIRS]         # Other auxiliary folders
 ```
 
-
 ## 🧩 Key Architecture Components
 
 ### 1. Entry Point (`[ENTRY_POINT_PATH]`)
@@ -83,13 +76,11 @@ The project is a **[ARCHITECTURE_TYPE]** based on **[MAIN_STACK]** with [ARCHITE
 - [INITIALIZATION_STEPS]
 - [MAIN_SETUP_FEATURES]
 
-
 ### 2. [MAIN_ARCHITECTURE_COMPONENT]
 
 - **[COMPONENT_1]**: [DESCRIPTION_1]
 - **[COMPONENT_2]**: [DESCRIPTION_2]
 - **[COMPONENT_3]**: [DESCRIPTION_3]
-
 
 ### 3. Modular Structure
 
@@ -100,7 +91,6 @@ Each functional module includes:
 - **[MODULE_PART_3]** (`[MODULE_PATH_3]/`)
 - **[MODULE_PART_4]** (`[MODULE_PATH_4]/`)
 
-
 ### 4. [ROUTING_SYSTEM] (`[ROUTING_PATH]`)
 
 Centralized route management:
@@ -108,7 +98,6 @@ Centralized route management:
 - [ROUTING_FEATURES]
 - [API_ROUTING_INFO]
 - [FRONTEND_ROUTING_INFO]
-
 
 ## 🔧 Configuration Files
 
@@ -120,14 +109,12 @@ Centralized route management:
 - **[PROXY_INFO]**: [PROXY_DESCRIPTION]
 - **Aliases**: [ALIASES_INFO]
 
-
 ### [LANGUAGE_CONFIG] (`[LANGUAGE_CONFIG_FILE]`)
 
 - **Target**: [COMPILE_TARGET]
 - **Module**: [MODULE_SYSTEM]
 - **Aliases**:
-[PATH_ALIASES_LIST]
-
+  [PATH_ALIASES_LIST]
 
 ### [TEST_FRAMEWORK] (`[TEST_CONFIG_FILE]`)
 
@@ -136,12 +123,10 @@ Centralized route management:
 - **Mocks**: [MOCKED_LIBRARIES]
 - **Transformations**: [TEST_TRANSFORMATIONS]
 
-
 ### [TRANSPILER] (`[TRANSPILER_CONFIG]`)
 
 - **Presets**: [PRESETS_LIST]
 - **Plugins**: [PLUGINS_LIST]
-
 
 ## 🎯 Main Application Modules
 
@@ -154,14 +139,12 @@ Centralized route management:
 - [MODULE_1_FEATURE_3]
 - [MODULE_1_FEATURE_4]
 
-
 #### 2. [MODULE_2_NAME] (`[MODULE_2_PATH]/`)
 
 - [MODULE_2_FEATURE_1]
 - [MODULE_2_FEATURE_2]
 - [MODULE_2_FEATURE_3]
 - [MODULE_2_FEATURE_4]
-
 
 #### 3. [MODULE_3_NAME] (`[MODULE_3_PATH]/`)
 
@@ -170,7 +153,6 @@ Centralized route management:
 - [MODULE_3_FEATURE_3]
 - [MODULE_3_FEATURE_4]
 
-
 #### 4. [MODULE_4_NAME] (`[MODULE_4_PATH]/`)
 
 - [MODULE_4_FEATURE_1]
@@ -178,14 +160,12 @@ Centralized route management:
 - [MODULE_4_FEATURE_3]
 - [MODULE_4_FEATURE_4]
 
-
 #### 5. [MODULE_5_NAME] (`[MODULE_5_PATH]/`)
 
 - [MODULE_5_FEATURE_1]
 - [MODULE_5_FEATURE_2]
 - [MODULE_5_FEATURE_3]
 - [MODULE_5_FEATURE_4]
-
 
 ### Reusable Components (`[COMPONENTS_DIR]/`)
 
@@ -195,7 +175,6 @@ Centralized route management:
 - **[COMPONENT_4]**: [COMPONENT_4_DESCRIPTION]
 - **[COMPONENT_5]**: [COMPONENT_5_DESCRIPTION]
 
-
 ## 🔄 Data Flow
 
 ### [DATA_FLOW_PATTERN]
@@ -204,7 +183,6 @@ Centralized route management:
 [DATA_FLOW_DIAGRAM]
 ```
 
-
 ### [DATA_MANAGEMENT_SYSTEM]:
 
 - **[DATA_COMPONENT_1]**: [DATA_COMPONENT_1_DESCRIPTION]
@@ -212,13 +190,11 @@ Centralized route management:
 - **[DATA_COMPONENT_3]**: [DATA_COMPONENT_3_DESCRIPTION]
 - **[DATA_COMPONENT_4]**: [DATA_COMPONENT_4_DESCRIPTION]
 
-
 ### [SELECTORS_OR_QUERIES]
 
 - [SELECTOR_FEATURE_1]
 - [SELECTOR_FEATURE_2]
 - [SELECTOR_FEATURE_3]
-
 
 ## 🛠️ Development Tools
 
@@ -234,14 +210,12 @@ Centralized route management:
 [ADDITIONAL_COMMANDS]     # [ADDITIONAL_DESCRIPTIONS]
 ```
 
-
 ### [DEVELOPMENT_SERVER_NAME] (`[DEV_SERVER_PATH]/`)
 
 - [DEV_SERVER_FEATURE_1]
 - [DEV_SERVER_FEATURE_2]
 - [DEV_SERVER_FEATURE_3]
 - [DEV_SERVER_FEATURE_4]
-
 
 ## 🧪 Testing
 
@@ -252,13 +226,11 @@ Centralized route management:
 - **[TEST_TYPE_3]**: `[TEST_PATTERN_3]`
 - **[TEST_TYPE_4]**: `[TEST_PATTERN_4]`
 
-
 ### Code Coverage
 
 - Minimum threshold: [COVERAGE_PERCENTAGE]%
 - Exclusions: [COVERAGE_EXCLUSIONS]
 - [COVERAGE_REPORT_FORMATS] reports
-
 
 ## 🎨 Styles and UI
 
@@ -273,14 +245,12 @@ Centralized route management:
 └── [STYLES_ENTRY_FILE]     # [STYLES_ENTRY_DESCRIPTION]
 ```
 
-
 ### [UI_LIBRARY] ([UI_LIBRARY_VERSION])
 
 - [UI_LIBRARY_FEATURE_1]
 - [UI_LIBRARY_FEATURE_2]
 - [UI_LIBRARY_FEATURE_3]
 - [UI_LIBRARY_FEATURE_4]
-
 
 ## 🔗 External Dependencies
 
@@ -293,7 +263,6 @@ Centralized route management:
 - **[MAIN_LIB_5]**: [MAIN_LIB_5_DESCRIPTION]
 - **[MAIN_LIB_6]**: [MAIN_LIB_6_DESCRIPTION]
 
-
 ### Dev Dependencies
 
 - **[DEV_LIB_1]**: [DEV_LIB_1_DESCRIPTION]
@@ -301,7 +270,6 @@ Centralized route management:
 - **[DEV_LIB_3]**: [DEV_LIB_3_DESCRIPTION]
 - **[DEV_LIB_4]**: [DEV_LIB_4_DESCRIPTION]
 - **[DEV_LIB_5]**: [DEV_LIB_5_DESCRIPTION]
-
 
 ## 📊 Metrics and Monitoring
 
@@ -312,14 +280,12 @@ Centralized route management:
 - ~[COVERAGE_PERCENT]% test coverage
 - [LANGUAGE_SPECIFIC_INFO]
 
-
 ### Performance
 
 - [PERFORMANCE_FEATURE_1]
 - [PERFORMANCE_FEATURE_2]
 - [PERFORMANCE_FEATURE_3]
 - [PERFORMANCE_FEATURE_4]
-
 
 ## 🚨 Important Development Notes
 
@@ -337,14 +303,13 @@ Centralized route management:
 - **[INTEGRATION_3]**: [INTEGRATION_3_DESCRIPTION]
 - **[INTEGRATION_4]**: [INTEGRATION_4_DESCRIPTION]
 
-
 ### Critical Dependencies
 
 - **[CRITICAL_DEP_1]**: [CRITICAL_DEP_1_DESCRIPTION]
 - **[CRITICAL_DEP_2]**: [CRITICAL_DEP_2_DESCRIPTION]
 - **[CRITICAL_DEP_3]**: [CRITICAL_DEP_3_DESCRIPTION]
 
-***
+---
 
 ## 📝 Template Adaptation Instructions
 
@@ -364,28 +329,6 @@ The document should be:
 - **Current** - match the current state of the codebase
 - **Navigational** - help quickly orient within the project
 
-***
+---
 
 > **Note**: This document serves as a navigation map for AI agents and developers. When making architectural changes, update the corresponding sections.
-<span style="display:none">[^1][^2][^3][^4][^5][^6][^7][^8][^9]</span>
-
-<div style="text-align: center">⁂</div>
-
-[^1]: https://translate.google.com/?hl=ru\&layout=1\&eotf=1\&sl=en\&tl=es\&text=
-
-[^2]: https://www.onlinedoctranslator.com/en/translate-russian-to-english_ru_en
-
-[^3]: http://www.lingvista.ru/en/projects/projects-translation/
-
-[^4]: https://www.talkrussian.com/technical-russian-translation
-
-[^5]: https://www.russian-translation-pros.com/russian-translation-technical.html
-
-[^6]: http://www.benevox.com/en/tekhnicheskij-perevod.html
-
-[^7]: https://translate.google.ca
-
-[^8]: https://www.canva.com/features/document-translator/
-
-[^9]: https://quillbot.com/translate/russian-to-english
-

@@ -2,6 +2,76 @@
 
 A comprehensive collection of specialized Claude AI agent configurations designed to streamline and optimize software development workflows. Each agent serves a distinct role in the development process, following SLON principles, KISS philosophy, and Occam's razor to maintain simplicity and effectiveness.
 
+## Getting Started
+
+1. **Identify your task type** using the [Agent Selection Guide](DECISION_TREES.md)
+2. **Document requirements** (PRD Writer) for new features
+3. **Implement precisely** (Worker) following the plan
+4. **Optimize continuously** (Refactor) as code grows
+5. **Verify completion** (Auditor) to ensure quality and requirement fulfillment before considering the task finished
+
+## Usage Guidelines
+
+### Core Principles
+
+All agents follow these foundational principles:
+
+- **SLON Principles**: Strive for Simplicity, Lean solutions, doing One clear thing, and No unnecessary overengineering
+- **KISS (Keep It Simple, Stupid)**: "As simple as possible, but not simpler than necessary"
+- **Occam's Razor**: Every new entity or abstraction must justify its existence
+
+### Best Practices
+
+1. **Always start with Scanner** for complex or unfamiliar codebases
+2. **Use Project Planner** for multi-step features and strategic planning
+3. **Architect handles** design decisions and architectural evaluations
+4. **PRD Writer** formalizes requirements before development
+5. **Worker executes** with precision and quality focus
+6. **Refactor PROACTIVELY** when files exceed 500 lines (automatic trigger)
+
+**💡 Need help choosing?** Use the [Decision Trees Guide](DECISION_TREES.md) for detailed selection flowcharts and scenario-based selection matrices.
+
+## Claude Code Setup Guide
+
+For comprehensive setup instructions and workflows, see the [Claude Code Guide](guide/CLAUDE_CODE_GUIDE.md) which includes:
+
+- Initial CLAUDE.md template setup process
+- Scanner => Project-Planner flow options
+- Task complexity categorization (Simple/Medium/Complex)
+- ULTRATHINK methodology for complex projects
+- Best practices for 80-90% success rate
+
+### Token Optimization Strategy
+
+The agent workflow is designed for optimal token efficiency and cost management:
+
+**Scanner => Project-Planner => Worker Flow (Recommended for token efficiency)**
+- Uses **Opus model only for Project-Planner** (strategic planning phase)
+- Scanner and Worker agents use **cheaper Sonnet models**
+- Project-Planner has **limited tools** (5 tools: Read, LS, Grep, Glob, TodoWrite) to minimize token usage
+- **Best for**: Token-conscious users who want to maximize Sonnet usage while leveraging Opus for critical planning
+
+**Scanner => Plan Mode => Worker Flow (Maximum capability)**  
+- Uses **your primary model** for all phases including planning
+- Plan mode provides **full tool access** during planning
+- **Best for**: Users not constrained by token costs who want maximum capability and tool access
+
+💡 **Cost optimization tip**: The first flow saves significant tokens by restricting Opus usage to planning only, while the second flow prioritizes capability over cost efficiency.
+
+## Agent Tools and Capabilities
+
+Each agent comes with specialized tools optimized for their role:
+
+- **Scanner**: 36 tools including Figma API integration, Context7 library access, full Playwright browser automation (25 tools), IDE integration, plus comprehensive file analysis and search capabilities
+- **Project Planner**: 5 tools (Read, LS, Grep, Glob, TodoWrite)
+- **Architect**: 7 tools focused on quick analysis (Bash, Grep, LS, WebSearch, TodoWrite, NotebookRead, Glob) for architectural assessment and documentation
+- **PRD Writer**: 8 tools for research and documentation (Task, Bash, Grep, LS, Read, Write, WebSearch, Glob)
+- **Worker**: 9 implementation-focused tools (Read, Write, Edit, MultiEdit, Bash, Grep, Glob, LS, TodoWrite) for precise code execution
+- **Refactor**: 7 specialized tools (Read, Edit, Bash, Grep, Glob, LS, TodoWrite)
+- **Auditor**: 7 comprehensive verification tools (Read, Grep, Glob, LS, Bash, mcp__ide__getDiagnostics, TodoWrite)
+
+---
+
 ## Overview
 
 This project provides seven specialized Claude agents that work together to create a complete software development ecosystem:
@@ -236,47 +306,6 @@ graph TD
 - **Critical implementations** where thoroughness is paramount
 - **Cross-domain tasks** involving code, documentation, and external research
 - **High-stakes projects** requiring maximum quality assurance
-
-## Usage Guidelines
-
-### Core Principles
-
-All agents follow these foundational principles:
-
-- **SLON Principles**: Strive for Simplicity, Lean solutions, doing One clear thing, and No unnecessary overengineering
-- **KISS (Keep It Simple, Stupid)**: "As simple as possible, but not simpler than necessary"
-- **Occam's Razor**: Every new entity or abstraction must justify its existence
-
-### Best Practices
-
-1. **Always start with Scanner** for complex or unfamiliar codebases
-2. **Use Project Planner** for multi-step features and strategic planning
-3. **Architect handles** design decisions and architectural evaluations
-4. **PRD Writer** formalizes requirements before development
-5. **Worker executes** with precision and quality focus
-6. **Refactor PROACTIVELY** when files exceed 500 lines (automatic trigger)
-
-**💡 Need help choosing?** Use the [Decision Trees Guide](DECISION_TREES.md) for detailed selection flowcharts and scenario-based selection matrices.
-
-## Getting Started
-
-1. **Identify your task type** using the [Agent Selection Guide](DECISION_TREES.md)
-2. **Document requirements** (PRD Writer) for new features
-3. **Implement precisely** (Worker) following the plan
-4. **Optimize continuously** (Refactor) as code grows
-5. **Verify completion** (Auditor) to ensure quality and requirement fulfillment before considering the task finished
-
-## Agent Tools and Capabilities
-
-Each agent comes with specialized tools optimized for their role:
-
-- **Scanner**: 36 tools including Figma API integration, Context7 library access, full Playwright browser automation (25 tools), IDE integration, plus comprehensive file analysis and search capabilities
-- **Project Planner**: 5 tools (Read, LS, Grep, Glob, TodoWrite)
-- **Architect**: 7 tools focused on quick analysis (Bash, Grep, LS, WebSearch, TodoWrite, NotebookRead, Glob) for architectural assessment and documentation
-- **PRD Writer**: 8 tools for research and documentation (Task, Bash, Grep, LS, Read, Write, WebSearch, Glob)
-- **Worker**: 9 implementation-focused tools (Read, Write, Edit, MultiEdit, Bash, Grep, Glob, LS, TodoWrite) for precise code execution
-- **Refactor**: 7 specialized tools (Read, Edit, Bash, Grep, Glob, LS, TodoWrite)
-- **Auditor**: 7 comprehensive verification tools (Read, Grep, Glob, LS, Bash, mcp__ide__getDiagnostics, TodoWrite)
 
 ## License
 

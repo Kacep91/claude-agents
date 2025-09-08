@@ -40,6 +40,22 @@ Problem/Task Input
 2. Primary agent → Execute the work
 3. Optional: **AUDITOR** → Verify completion
 
+#### Scanner => Project-Planner Flow Options
+
+For medium to complex tasks, you have two main flow options:
+
+**Option 1 (Standard flow):**
+Write your prompt and add: "First, use scanner to gather information and then use project-planner to make up the plan"
+- Scanner subagents will search, analyze, collect and extract information from code and the internet
+- Project-planner subagent will create thorough step-by-step plans with maximum details and phases  
+- Multiple, simultaneous, parallel worker subagents will execute the plan
+
+**Option 2 (Plan mode flow):**
+Write your prompt in PLAN MODE and add: "First, use scanner to gather information needed and then create a plan with to-do for all workers"
+- Scanner subagents will gather all necessary information
+- You create the plan with to-do items directly (without project-planner)
+- Worker subagents execute based on the to-do plan
+
 ### Complex Tasks (5+ steps)
 **Strategic Analysis Methodology:**
 1. **SCANNER** → Comprehensive analysis
