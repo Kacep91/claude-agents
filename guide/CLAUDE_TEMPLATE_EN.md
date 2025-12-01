@@ -15,28 +15,6 @@
 7. ADDITIONAL INFO ON PROJECT CAN BE FOUND IN [./docs or other folder]
 8. PROJECT STRUCTURE IS IN ./PROJECT_STRUCTURE.md
 
-## 🚀 Efficient Commands
-
-One CLI command > Multiple tool calls
-
-    1. Pattern Search:
-    - rg -n "pattern" --glob '!node_modules/*' instead of multiple Grep calls
-
-    2. File Finding:
-    - fd filename or fd .ext directory instead of Glob tool
-
-    3. File Preview:
-    - bat -n filepath for syntax-highlighted preview with line numbers
-
-    4. Bulk Refactoring:
-    - rg -l "pattern" | xargs sed -i 's/old/new/g' for mass replacements
-
-    5. Project Structure:
-    - tree -L 2 directories for quick overview
-
-    6. JSON Inspection:
-    - jq '.key' file.json for quick JSON parsing
-
 ## 🏗️ Project Stack
 
 - **[Main language/framework]** - [description]
@@ -76,6 +54,33 @@ No errors. No formatting issues. No compiler warnings.
 3. **[Feature 3]** - [description]
    [Add as needed]
 
+## 🏗️ Architectural Patterns
+
+### [Main Flow Pattern Name]
+
+**[Description of the main application flow]:**
+
+```
+[STEP 1] → [STEP 2] → [STEP 3]
+```
+
+- [Page/Component 1] → [Page/Component 2] → [Page/Component 3]
+
+### [Component Pattern Name]
+
+**[Description of component architecture]:**
+
+- **[Mode/Variant 1]** — [description] (port/URL if applicable)
+- **[Mode/Variant 2]** — [description] (port/URL if applicable)
+
+### [Data Flow Pattern]
+
+**[Description of state management]:**
+
+- **[State containers]**: [description]
+- **[API clients]**: [description]
+- **[Side effects handling]**: [description]
+
 ## 📁 Project Structure
 
 ```
@@ -91,6 +96,22 @@ No errors. No formatting issues. No compiler warnings.
 
 > 📖 **Detailed architecture**: Full structure in PROJECT_STRUCTURE.md
 
+<details>
+<summary>Expand detailed project structure</summary>
+
+```
+[Add detailed tree structure here using tree -L 3-4 output]
+```
+
+**Project Statistics:**
+- 📦 **Directories**: [count]
+- 📄 **Files**: [count]
+- 🧪 **TypeScript/JS files**: [count]
+- 🧩 **Components**: [count]
+- 🧪 **Test files**: [count]
+
+</details>
+
 ## ✅ Verification Checkpoints
 
 **Stop and check** at these moments:
@@ -104,6 +125,15 @@ Run check: `[check commands: lint, test, build]`
 > Why: This prevents error accumulation and ensures code stability.
 
 ## 💻 Coding Standards
+
+### FORBIDDEN:
+
+- **NO any type** - use strict typing!
+- **NO console.log** in production code - use proper logging!
+- **NO hardcoded values** - use constants and configs!
+- **NO code duplication** - reuse components and utilities!
+- **NO ignoring errors** - handle all exceptions!
+- **NO TODOs** in final code
 
 ### Mandatory rules:
 
@@ -140,6 +170,17 @@ Run check: `[check commands: lint, test, build]`
 - Don't store sensitive data openly
 - Use HTTPS/TLS for communication
 - Escape user input
+
+## 🤝 Problem Solving
+
+When stuck or confused:
+
+1. **Stop** - Don't overcomplicate the solution
+2. **Step back** - Re-read requirements and specifications
+3. **Simplify** - Simple solution is usually better
+4. **Ask** - "I see two approaches: [A] vs [B]. Which aligns better with project standards?"
+
+Your ideas for improvement are welcome - ask!
 
 ## 📘 Code Pattern Examples
 
@@ -204,3 +245,10 @@ Template should be:
 - **Clear** - understandable to any developer
 
 ---
+
+# Important Instructions Reminders
+
+Do what has been asked; nothing more, nothing less.
+NEVER create files unless they're absolutely necessary for achieving your goal.
+ALWAYS prefer editing an existing file to creating a new one.
+NEVER proactively create documentation files (\*.md) or README files. Only create documentation files if explicitly requested by the User.

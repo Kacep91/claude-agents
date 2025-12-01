@@ -1,316 +1,90 @@
 # Claude Agents Collection
 
-A comprehensive collection of specialized Claude AI agent configurations designed to streamline and optimize software development workflows. Each agent serves a distinct role in the development process, following SLON principles, KISS philosophy, and Occam's razor to maintain simplicity and effectiveness.
+Specialized Claude AI agent configurations for software development workflows. Each agent follows SLON, KISS, and Occam's razor principles.
 
-## Getting Started
+## Core Principles
 
-1. **Identify your task type** using the [Agent Selection Guide](DECISION_TREES.md)
-2. **Document requirements** (PRD Writer) for new features
-3. **Implement precisely** (Worker) following the plan
-4. **Optimize continuously** (Refactor) as code grows
-5. **Verify completion** (Auditor) to ensure quality and requirement fulfillment before considering the task finished
+- **SLON** - Simplicity, Lean solutions, One clear thing, No over-engineering
+- **KISS** - As simple as possible, but not simpler than necessary
+- **Occam's Razor** - Every abstraction must justify its existence
+- **DRY** - Extract shared logic, avoid repetition
 
-## Usage Guidelines
+## Agents
 
-### Core Principles
+| Agent                   | Model  | Purpose                                | When to Use                                           |
+| ----------------------- | ------ | -------------------------------------- | ----------------------------------------------------- |
+| **architect**           | Sonnet | Systems architecture, design decisions | Design, refactoring planning, architecture evaluation |
+| **prd-writer**          | Opus   | LLM-optimized PRDs                     | Formalizing requirements before development           |
+| **worker**              | Opus   | Production-ready TS/JS code            | Implementing features, executing plans                |
+| **test-writer-worker**  | Sonnet | Unit/integration tests                 | Writing tests for components, sagas, validators       |
+| **refactor**            | Opus   | Code modularization                    | Files >500 lines, breaking monoliths                  |
+| **test-auditor**        | Opus   | Test coverage audit                    | Verifying test quality and coverage                   |
+| **linus-code-reviewer** | Opus   | Brutally honest code review            | PR reviews, validating AI-generated code              |
 
-All agents follow these foundational principles:
+## Scripts
 
-- **SLON Principles**: Strive for Simplicity, Lean solutions, doing One clear thing, and No unnecessary overengineering
-- **KISS (Keep It Simple, Stupid)**: "As simple as possible, but not simpler than necessary"
-- **Occam's Razor**: Every new entity or abstraction must justify its existence
+Utility scripts for test and type checking workflows.
 
-### Best Practices
+| Script               | Purpose                                               | When to Use                                             |
+| -------------------- | ----------------------------------------------------- | ------------------------------------------------------- |
+| `analyzeCoverage.js` | Parses lcov.info, outputs coverage stats by directory | After running tests with coverage to find weak spots    |
+| `extract-tests.js`   | Runs tests with progress bar, ETA, failure extraction | Need detailed failure reports (test-results.failed.txt) |
+| `tscFilesRunner.js`  | TypeScript check for specific files                   | Manual TS check on arbitrary files                      |
+| `tscParser.js`       | TypeScript check for git staged files                 | Pre-commit TS validation                                |
 
-1. **Always start with Scanner** for complex or unfamiliar codebases
-2. **Use Project Planner** for multi-step features and strategic planning
-3. **Architect handles** design decisions and architectural evaluations
-4. **PRD Writer** formalizes requirements before development
-5. **Worker executes** with precision and quality focus
-6. **Refactor PROACTIVELY** when files exceed 500 lines (automatic trigger)
+**Usage:**
 
-**💡 Need help choosing?** Use the [Decision Trees Guide](DECISION_TREES.md) for detailed selection flowcharts and scenario-based selection matrices.
+```bash
+# Coverage analysis (requires coverage/lcov.info)
+node scripts/analyzeCoverage.js
 
-## Claude Code Setup Guide
+# Run tests with progress tracking
+node scripts/extract-tests.js
 
-For comprehensive setup instructions and workflows, see the [Claude Code Guide](guide/CLAUDE_CODE_GUIDE.md) which includes:
+# Check specific files
+node scripts/tscFilesRunner.js --files "src/a.ts,src/b.tsx"
 
-- Initial CLAUDE.md template setup process
-- Scanner => Project-Planner flow options
-- Task complexity categorization (Simple/Medium/Complex)
-- ULTRATHINK methodology for complex projects
-- Best practices for 80-90% success rate
-
-### Token Optimization Strategy
-
-The agent workflow is designed for optimal token efficiency and cost management:
-
-**Scanner => Project-Planner => Worker Flow (Recommended for token efficiency)**
-- Uses **Opus model only for Project-Planner** (strategic planning phase)
-- Scanner and Worker agents use **cheaper Sonnet models**
-- Project-Planner has **limited tools** (5 tools: Read, LS, Grep, Glob, TodoWrite) to minimize token usage
-- **Best for**: Token-conscious users who want to maximize Sonnet usage while leveraging Opus for critical planning
-
-**Scanner => Plan Mode => Worker Flow (Maximum capability)**  
-- Uses **your primary model** for all phases including planning
-- Plan mode provides **full tool access** during planning
-- **Best for**: Users not constrained by token costs who want maximum capability and tool access
-
-💡 **Cost optimization tip**: The first flow saves significant tokens by restricting Opus usage to planning only, while the second flow prioritizes capability over cost efficiency.
-
-## Agent Tools and Capabilities
-
-Each agent comes with specialized tools optimized for their role:
-
-- **Scanner**: 36 tools including Figma API integration, Context7 library access, full Playwright browser automation (25 tools), IDE integration, plus comprehensive file analysis and search capabilities
-- **Project Planner**: 5 tools (Read, LS, Grep, Glob, TodoWrite)
-- **Architect**: 7 tools focused on quick analysis (Bash, Grep, LS, WebSearch, TodoWrite, NotebookRead, Glob) for architectural assessment and documentation
-- **PRD Writer**: 8 tools for research and documentation (Task, Bash, Grep, LS, Read, Write, WebSearch, Glob)
-- **Worker**: 9 implementation-focused tools (Read, Write, Edit, MultiEdit, Bash, Grep, Glob, LS, TodoWrite) for precise code execution
-- **Refactor**: 7 specialized tools (Read, Edit, Bash, Grep, Glob, LS, TodoWrite)
-- **Auditor**: 7 comprehensive verification tools (Read, Grep, Glob, LS, Bash, mcp__ide__getDiagnostics, TodoWrite)
-
----
-
-## Overview
-
-This project provides seven specialized Claude agents that work together to create a complete software development ecosystem:
-
-- **Scanner** - Information gathering and analysis
-- **Architect** - Systems design and architecture
-- **Project Planner** - Strategic planning and task coordination
-- **PRD Writer** - Product requirements documentation
-- **Worker** - Implementation and execution
-- **Refactor** - Code optimization and modularization
-- **Auditor** - Quality verification and completion validation
-
-## Agent Profiles
-
-### 🔍 Scanner Agent
-
-- **Model**: Sonnet
-- **Color**: Blue
-- **Purpose**: Comprehensive, unbiased information gathering and analysis
-- **Capabilities**:
-  - Systematic codebase reconnaissance
-  - Pattern recognition and documentation
-  - Context discovery and mapping
-  - Raw data collection without interpretation
-  - Gap identification in implementations
-  - PROJECT_STRUCTURE.md analysis for project-wide issues
-
-**When to Use**: Before making any major decisions, understanding complex bugs, or analyzing existing architectures.
-
-### 🏗️ Architect Agent
-
-- **Model**: Sonnet
-- **Color**: Purple
-- **Purpose**: Systems architecture and design excellence
-- **Capabilities**:
-  - Complete component mapping and dependency analysis
-  - SLON/KISS violation identification
-  - Architectural decision records (ADR)
-  - Performance and scalability assessment
-  - Migration and rollout planning
-  - **ALWAYS ULTRATHINK methodology** for comprehensive analysis
-  - Multi-pass design approach (Initial Scan → Simplify → Design → Review)
-
-**When to Use**: For design decisions, refactoring planning, or architecture evaluation tasks.
-
-### 📋 Project Planner Agent
-
-- **Model**: Opus
-- **Color**: Orange
-- **Purpose**: Comprehensive project analysis and strategic planning
-- **Capabilities**:
-  - Multi-step hierarchical planning
-  - Risk assessment and mitigation strategies
-  - Technical requirement extraction
-  - Implementation phase structuring
-  - Worker task delegation
-
-**When to Use**: For new features, complex projects, or when you need strategic implementation roadmaps.
-
-### 📄 PRD Writer Agent
-
-- **Model**: Sonnet
-- **Color**: Green
-- **Purpose**: Product Requirements Document creation
-- **Capabilities**:
-  - Business and user goal documentation
-  - User persona development
-  - Functional requirements specification
-  - User story creation with acceptance criteria
-  - Technical considerations documentation
-
-**When to Use**: When formalizing product specifications or documenting feature requirements.
-
-### ⚡ Worker Agent
-
-- **Model**: Sonnet
-- **Color**: Yellow
-- **Purpose**: Precise implementation and execution
-- **Capabilities**:
-  - Code implementation following project conventions
-  - Quality assurance and testing
-  - Error handling and edge case management
-  - Documentation updates
-  - Validation and verification
-
-**When to Use**: For executing planned solutions, implementing features, or fixing identified issues.
-
-### 🔧 Refactor Agent
-
-- **Model**: Sonnet
-- **Color**: Cyan
-- **Purpose**: Code optimization and modularization specialist
-- **Capabilities**:
-  - **PROACTIVE large file decomposition when files exceed 500 lines**
-  - Logical boundary identification
-  - Component extraction and modularization
-  - Dead code elimination
-  - Interface design and cleanup
-  - Monolith slaying methodology with systematic analysis and execution
-
-**When to Use**: For breaking down monoliths, optimizing large files, or improving code structure.
-
-### ✅ Auditor Agent
-
-- **Model**: Sonnet
-- **Color**: Pink
-- **Purpose**: Comprehensive task completion verification and quality assurance
-- **Capabilities**:
-  - Complete requirement verification against original specifications
-  - End-to-end solution validation
-  - Quality assessment using SLON, KISS, and Occam's razor principles
-  - Gap analysis and missing functionality identification
-  - Production-readiness evaluation
-
-**When to Use**: To verify task completion, validate implementations meet all requirements, or confirm production readiness.
-
-## Workflow Integration
-
-### Typical Development Flow
-
-```mermaid
-graph TD
-    A[Task/Issue] --> B[Scanner Agent]
-    B --> C{Analysis Complete?}
-    C -->|Complex Design| D[Architect Agent]
-    C -->|New Feature| E[Project Planner]
-    C -->|Documentation Needed| F[PRD Writer]
-    D --> G[Implementation Plan]
-    E --> G
-    F --> G
-    G --> H[Worker Agent]
-    H --> I{Code Quality Check}
-    I -->|Large Files >500 lines| J[Refactor Agent]
-    I -->|Complete| K[Auditor Agent]
-    J --> K
-    K --> L{Verification Complete?}
-    L -->|Gaps Found| H
-    L -->|Complete| M[Delivery]
+# Check staged files
+node scripts/tscParser.js
 ```
 
-### Agent Interaction Patterns
+## Workflow
 
-1. **Discovery Phase**: Scanner → (Architect/Planner)
-2. **Planning Phase**: (Architect/Planner) → Worker
-3. **Implementation Phase**: Worker → (Refactor if needed)
-4. **Quality Verification Phase**: Auditor → (Worker if gaps found)
-5. **Documentation Phase**: PRD Writer (as needed)
+**All tasks follow the same flow regardless of complexity:**
 
-## ULTRATHINK Methodology
+### 1. Enter Planning Mode
 
-ULTRATHINK is an advanced multi-agent coordination approach that maximizes parallel processing and comprehensive analysis through simultaneous agent deployment.
+Use Claude's planning mode or prompt: "Create a detailed step-by-step plan, analyzing the information below"
 
-### USAGE EXAMPLE
+### 2. Write Your Prompt
 
-First of all, use multiple, simultaneous scanner subagents to search, analyze, collect and extract information from code and the internet
-Scondly, use project-planner subagent for thorough planning, creating step-by-step plans, with maximum details and phases
-Finally, use multiple, simultaneous, parallel worker subagents to execute the plan  
-ULTRATHINK
-{USER_PROMPT}
+- Reference files that may be related to the issue (without assumptions - avoid biasing the AI)
+- Specify info gathering: `use multiple @explore subagents to get info, search files and research`
+- Specify execution: `use multiple parallel @worker to implement the plan`
+- End with: "analyze the information you find and provide at least 3 possible causes"
 
-### Practical Implementation
+### 3. For Complex Bugs (optional)
 
-```mermaid
-graph TD
-    A[Complex Task] --> B[Deploy Multiple Scanner Agents]
-    B --> C[Scanner 1: Codebase Analysis]
-    B --> D[Scanner 2: Dependencies Check]
-    B --> E[Scanner 3: Documentation Review]
-    B --> F[Scanner 4: External Research]
+Add reverse analysis: "Conduct reverse analysis from the component where X is used to its source code"
 
-    C --> G[Project Planner Agent]
-    D --> G
-    E --> G
-    F --> G
+### 4. Refine the Plan
 
-    G --> H[Detailed Multi-Phase Plan]
-    H --> I[Deploy Parallel Worker Agents]
+Discuss with AI, iterate until the plan is ideal. Challenge assumptions, debate approaches if needed.
 
-    I --> J[Worker 1: Core Implementation]
-    I --> K[Worker 2: Testing & Validation]
-    I --> L[Worker 3: Documentation Updates]
-    I --> M[Worker 4: Integration Tasks]
+### 5. Execute & Monitor
 
-    J --> N[Synchronized Completion]
-    K --> N
-    L --> N
-    M --> N
-```
+Accept the plan and monitor execution. Correct in real-time or interrupt if it goes off track.
 
-### Best Practices for Multi-Agent Coordination
+### 6. Context Management
 
-#### 1. **Information Gathering Phase**
+If context is low (15-20% Claude / 50% Codex remaining):
 
-- Deploy 3-4 scanner agents simultaneously for different aspects
-- Assign specific domains: codebase, dependencies, documentation, external research
-- Ensure no overlap in scanning responsibilities
-- Aggregate findings before planning phase
+1. Ask AI to save the complete plan to a file
+2. Restart session with clean context
+3. Attach the plan and prompt: `Get necessary information with multiple @explore subagents in parallel`
 
-#### 2. **Strategic Planning Phase**
-
-- Use single Project Planner agent for consistency
-- Feed all scanner results into comprehensive analysis
-- Request maximum detail level and multi-phase breakdown
-- Validate plan completeness before execution
-
-#### 3. **Parallel Execution Phase**
-
-- Deploy multiple worker agents for different plan phases
-- Maintain clear separation of concerns between workers
-- Implement synchronization points for dependent tasks
-- Monitor progress across all parallel streams
-
-#### 4. **Quality Assurance**
-
-- Run Auditor agent after all workers complete
-- Validate against original requirements from scanners
-- Ensure no gaps in implementation coverage
-- Confirm production readiness
-
-#### 5. **Coordination Guidelines**
-
-- **Always start with parallel scanning** for complex tasks
-- **Single source of truth** for planning (one Project Planner)
-- **Clear task boundaries** for parallel workers
-- **Explicit synchronization** points between phases
-- **Comprehensive validation** at completion
-
-### When to Use ULTRATHINK
-
-- **Complex, multi-faceted projects** requiring comprehensive analysis
-- **Large codebases** with multiple interconnected components
-- **Critical implementations** where thoroughness is paramount
-- **Cross-domain tasks** involving code, documentation, and external research
-- **High-stakes projects** requiring maximum quality assurance
+This allows targeted context gathering since the AI knows exactly what to look for.
 
 ## License
 
-This project is released under the GNU General Public License v3.0. See [LICENSE](LICENSE) for details.
-
----
-
-**Philosophy**: Each agent embodies expertise while maintaining simplicity. Together, they create a powerful development workflow that scales from simple tasks to complex architectural challenges, always prioritizing maintainable, high-quality outcomes.
+GNU General Public License v3.0. See [LICENSE](LICENSE) for details.

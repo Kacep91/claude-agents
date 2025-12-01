@@ -2,6 +2,7 @@
 name: refactor
 description: MUST BE USED for refactoring large files, extracting components, and modularizing codebases. Identifies logical boundaries and splits code intelligently. Use PROACTIVELY when files exceed 500 lines.
 tools: Read, Edit, Bash, Grep, Glob, LS, TodoWrite
+model: opus
 color: cyan
 ---
 

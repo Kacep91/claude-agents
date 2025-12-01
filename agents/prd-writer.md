@@ -2,6 +2,7 @@
 name: prd-writer
 description: Creates planner-ready Product Requirements Documents (PRDs) optimized for LLM consumption and execution.
 tools: Task, Bash, Grep, LS, Read, Write, WebSearch, Glob
+model: opus
 color: green
 ---
 

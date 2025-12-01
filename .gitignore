@@ -1,0 +1,5 @@
+# Claude Code local settings (contains machine-specific paths)
+.claude/settings.local.json
+
+# Claude plans (temporary)
+.claude/plans/

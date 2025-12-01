@@ -1,334 +1,243 @@
-# Project Structure [PROJECT_NAME]
+# PROJECT_STRUCTURE.md
 
-> **Architectural map of the project for AI agents and developers**
+> Architectural map for AI agents and developers. Enables quick navigation and dependency analysis.
 
-## 🏗️ General Architecture
+## Overview
 
-The project is a **[ARCHITECTURE_TYPE]** based on **[MAIN_STACK]** with [ARCHITECTURE_PATTERN] architecture. Uses **[MAIN_LANGUAGE]** with **[BUILD_TOOL]** for building and **[TEST_FRAMEWORK]** for testing.
+**[PROJECT_NAME]** is a **[ARCHITECTURE_TYPE]** built with **[MAIN_STACK]**.
 
-### Technology Stack
+<!-- Example: CCT-UI is a microfrontend built with React 17 + TypeScript + Redux -->
 
-- **Frontend/Main**: [FRONTEND_STACK]
-- **Build**: [BUILD_STACK]
-- **Styles**: [STYLES_STACK]
-- **Testing**: [TESTING_STACK]
-- **[ADDITIONAL_STACK_CATEGORY]**: [ADDITIONAL_STACK_DESCRIPTION]
+### Stack
 
-## 📁 Directory Structure
+| Layer    | Technology                                                              |
+| -------- | ----------------------------------------------------------------------- |
+| Frontend | [FRONTEND_STACK] <!-- Example: React 17, TypeScript 5.7, Redux-Saga --> |
+| Build    | [BUILD_STACK] <!-- Example: Webpack 5, Babel, Module Federation -->     |
+| Styles   | [STYLES_STACK] <!-- Example: SCSS, CSS Modules, Design Tokens -->       |
+| Testing  | [TESTING_STACK] <!-- Example: Jest, React Testing Library -->           |
 
-### Root Directory
+---
 
-```
-/[PROJECT_FOLDER]/
-├── [CONFIG_FILES]           # [CONFIG_DESCRIPTION]
-├── [MAIN_CONFIG]            # [MAIN_CONFIG_DESCRIPTION]
-├── [DEPENDENCIES_FILE]      # Dependencies and scripts
-├── [BUILD_CONFIG]           # Build configuration
-├── [TEST_CONFIG]            # Test configuration
-└── [DOCS_FOLDER]/          # Documentation
-```
+## Project Tree
 
-### Source Code (`[SOURCE_FOLDER]/`)
+<details>
+<summary>Expand full structure (tree -L 3)</summary>
 
 ```
-[SOURCE_FOLDER]/
-├── [ENTRY_POINT]           # Application entry point
-├── [COMPONENTS_DIR]/       # [COMPONENTS_DESCRIPTION]
-├── [PAGES_CONTAINERS]/     # [PAGES_DESCRIPTION]
-├── [STATE_MANAGEMENT]/     # [STATE_DESCRIPTION]
-├── [ROUTING_CONFIG]/       # [ROUTING_DESCRIPTION]
-├── [UTILS_HELPERS]/        # Utilities and helpers
-├── [TYPES_DIR]/           # Types/interfaces
-├── [STYLES_DIR]/          # Styles
-├── [ASSETS_DIR]/          # Assets (images, fonts)
-├── [CONFIG_DIR]/          # Configuration
-└── [TESTS_CONFIG]         # Test settings
+.
+├── [CONFIG_FILES]           # Root configs
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── [BUILD_CONFIG]       # webpack.config.js, vite.config.ts, etc.
+├── [SOURCE_FOLDER]/         # Source code
+│   ├── [ENTRY_POINT]        # index.tsx, main.ts
+│   ├── [COMPONENTS_DIR]/    # Reusable components
+│   ├── [PAGES_DIR]/         # Page containers
+│   ├── [STATE_DIR]/         # State management (store, reducers)
+│   ├── [ROUTES_DIR]/        # Routing configuration
+│   ├── [API_DIR]/           # API clients
+│   ├── [HOOKS_DIR]/         # Custom hooks
+│   ├── [UTILS_DIR]/         # Utilities
+│   ├── [TYPES_DIR]/         # TypeScript types
+│   └── [CONSTANTS_DIR]/     # Constants
+├── [PUBLIC_DIR]/            # Static files
+├── [ASSETS_DIR]/            # Fonts, images, styles
+└── [OUTPUT_DIR]/            # Build output (generated)
 ```
 
-### Resources and Static Files
+**Statistics:**
 
-```
-[PUBLIC_DIR]/              # Static files
-├── [IMAGES_DIR]/         # Images
-├── [FONTS_DIR]/          # Fonts
-├── [FILES_DIR]/          # Documents and files
-└── [STATIC_FILES]        # Additional static resources
+- Directories: ~[DIR_COUNT] <!-- Example: ~400 -->
+- Source files: ~[FILE_COUNT]+ <!-- Example: ~1200+ -->
+- Components: ~[COMPONENT_COUNT] <!-- Example: ~90 -->
+- Test coverage: [COVERAGE]% <!-- Example: 72% -->
 
-[OUTPUT_DIR]/             # Build output
-└── (generated automatically)
-```
+</details>
 
-### Auxiliary Directories
+---
 
-```
-[MOCKS_DIR]/              # Test mocks
-[COVERAGE_DIR]/           # Test coverage reports
-[BUILD_SCRIPTS]/          # Build scripts
-[CACHE_DIR]/             # Development cache
-[ADDITIONAL_DIRS]         # Other auxiliary folders
-```
+## Path Aliases
 
-## 🧩 Key Architecture Components
+<!-- Configure in tsconfig.json, update when adding new paths -->
 
-### 1. Entry Point (`[ENTRY_POINT_PATH]`)
+| Alias           | Path                           | Purpose          |
+| --------------- | ------------------------------ | ---------------- |
+| `@src/*`        | `[SOURCE_FOLDER]/*`            | Base imports     |
+| `@components/*` | `[SOURCE_FOLDER]/components/*` | UI components    |
+| `@pages/*`      | `[SOURCE_FOLDER]/pages/*`      | Page containers  |
+| `@hooks/*`      | `[SOURCE_FOLDER]/hooks/*`      | Custom hooks     |
+| `@api/*`        | `[SOURCE_FOLDER]/api/*`        | API layer        |
+| `@utils/*`      | `[SOURCE_FOLDER]/utils/*`      | Utilities        |
+| `@types/*`      | `[SOURCE_FOLDER]/types/*`      | TypeScript types |
+| `@constants/*`  | `[SOURCE_FOLDER]/constants/*`  | Constants        |
+| `@assets/*`     | `[ASSETS_FOLDER]/*`            | Static resources |
 
-- [ENTRY_POINT_RESPONSIBILITIES]
-- [INITIALIZATION_STEPS]
-- [MAIN_SETUP_FEATURES]
+<!-- Add project-specific aliases -->
 
-### 2. [MAIN_ARCHITECTURE_COMPONENT]
+---
 
-- **[COMPONENT_1]**: [DESCRIPTION_1]
-- **[COMPONENT_2]**: [DESCRIPTION_2]
-- **[COMPONENT_3]**: [DESCRIPTION_3]
+## NPM Scripts
 
-### 3. Modular Structure
+| Script             | Description                                           |
+| ------------------ | ----------------------------------------------------- |
+| `[DEV_COMMAND]`    | Start dev server <!-- Example: npm start -->          |
+| `[BUILD_COMMAND]`  | Production build <!-- Example: npm run build:prod --> |
+| `[TEST_COMMAND]`   | Run tests <!-- Example: npm test -->                  |
+| `[LINT_COMMAND]`   | Lint code <!-- Example: npm run lint -->              |
+| `[FORMAT_COMMAND]` | Format code <!-- Example: npm run format -->          |
 
-Each functional module includes:
+<!-- Add project-specific scripts -->
 
-- **[MODULE_PART_1]** (`[MODULE_PATH_1]/`)
-- **[MODULE_PART_2]** (`[MODULE_PATH_2]/`)
-- **[MODULE_PART_3]** (`[MODULE_PATH_3]/`)
-- **[MODULE_PART_4]** (`[MODULE_PATH_4]/`)
+---
 
-### 4. [ROUTING_SYSTEM] (`[ROUTING_PATH]`)
+## Source Structure (`[SOURCE_FOLDER]/`)
 
-Centralized route management:
+### Entry Points
 
-- [ROUTING_FEATURES]
-- [API_ROUTING_INFO]
-- [FRONTEND_ROUTING_INFO]
+- `[ENTRY_POINT]` — App bootstrap <!-- Example: index.tsx -->
+- `[ROOT_COMPONENT]` — Root component <!-- Example: App.tsx -->
+- `[ROUTES_CONFIG]` — Route definitions <!-- Example: routes/index.ts -->
 
-## 🔧 Configuration Files
+### API Layer (`[API_DIR]/`)
 
-### [BUILD_TOOL] (`[BUILD_CONFIG_FILE]`)
+<!-- List main API clients -->
 
-- **Entry point**: `[ENTRY_POINT]`
-- **Output**: `[OUTPUT_DIRECTORY]`
-- **Dev server**: [DEV_SERVER_INFO]
-- **[PROXY_INFO]**: [PROXY_DESCRIPTION]
-- **Aliases**: [ALIASES_INFO]
+- `[API_CLIENT_1]` — [DESCRIPTION] <!-- Example: transferApi.ts — Transfer operations -->
+- `[API_CLIENT_2]` — [DESCRIPTION]
+- `[BASE_CONFIG]` — Base URL, interceptors <!-- Example: baseURL.ts, retry.ts -->
 
-### [LANGUAGE_CONFIG] (`[LANGUAGE_CONFIG_FILE]`)
+### Components (`[COMPONENTS_DIR]/`)
 
-- **Target**: [COMPILE_TARGET]
-- **Module**: [MODULE_SYSTEM]
-- **Aliases**:
-  [PATH_ALIASES_LIST]
+Organized by type:
 
-### [TEST_FRAMEWORK] (`[TEST_CONFIG_FILE]`)
+- **[COMPONENT_CATEGORY_1]/**: [DESCRIPTION] <!-- Example: RHFComponents/ — React Hook Form adapters -->
+- **[COMPONENT_CATEGORY_2]/**: [DESCRIPTION] <!-- Example: Modals/ — Modal dialogs -->
+- **[COMPONENT_CATEGORY_3]/**: [DESCRIPTION]
 
-- **Environment**: [TEST_ENVIRONMENT]
-- **Coverage**: [COVERAGE_THRESHOLD]
-- **Mocks**: [MOCKED_LIBRARIES]
-- **Transformations**: [TEST_TRANSFORMATIONS]
+### Pages (`[PAGES_DIR]/`)
 
-### [TRANSPILER] (`[TRANSPILER_CONFIG]`)
+<!-- List main page modules -->
 
-- **Presets**: [PRESETS_LIST]
-- **Plugins**: [PLUGINS_LIST]
+| Module     | Path        | Description                          |
+| ---------- | ----------- | ------------------------------------ | ----------- | ---------------------- |
+| [MODULE_1] | `[PATH_1]/` | [DESCRIPTION] <!-- Example: Transfer | TransferV2/ | Currency transfers --> |
+| [MODULE_2] | `[PATH_2]/` | [DESCRIPTION]                        |
+| [MODULE_3] | `[PATH_3]/` | [DESCRIPTION]                        |
 
-## 🎯 Main Application Modules
+### State Management (`[STATE_DIR]/`)
 
-### Large Functional Blocks:
+<!-- Describe state architecture -->
 
-#### 1. [MODULE_1_NAME] (`[MODULE_1_PATH]/`)
+- **Pattern**: [STATE_PATTERN] <!-- Example: Redux + Redux-Saga -->
+- **Slices**: [SLICE_LIST] <!-- Example: transfer, rpp, dict, user -->
+- **Side effects**: [SIDE_EFFECTS] <!-- Example: Sagas in reducers/rootSagas.ts -->
 
-- [MODULE_1_FEATURE_1]
-- [MODULE_1_FEATURE_2]
-- [MODULE_1_FEATURE_3]
-- [MODULE_1_FEATURE_4]
+### Hooks (`[HOOKS_DIR]/`)
 
-#### 2. [MODULE_2_NAME] (`[MODULE_2_PATH]/`)
+<!-- List key custom hooks -->
 
-- [MODULE_2_FEATURE_1]
-- [MODULE_2_FEATURE_2]
-- [MODULE_2_FEATURE_3]
-- [MODULE_2_FEATURE_4]
+- `[HOOK_1]` — [PURPOSE] <!-- Example: useTransferData.ts — Load transfer data -->
+- `[HOOK_2]` — [PURPOSE]
+- `[HOOK_3]` — [PURPOSE]
 
-#### 3. [MODULE_3_NAME] (`[MODULE_3_PATH]/`)
+### Validators (`[VALIDATORS_DIR]/`)
 
-- [MODULE_3_FEATURE_1]
-- [MODULE_3_FEATURE_2]
-- [MODULE_3_FEATURE_3]
-- [MODULE_3_FEATURE_4]
+<!-- If applicable -->
 
-#### 4. [MODULE_4_NAME] (`[MODULE_4_PATH]/`)
+- Organized by domain: `[DOMAIN_1]/`, `[DOMAIN_2]/`
+- Shared validators: `[SHARED_VALIDATORS]`
 
-- [MODULE_4_FEATURE_1]
-- [MODULE_4_FEATURE_2]
-- [MODULE_4_FEATURE_3]
-- [MODULE_4_FEATURE_4]
+---
 
-#### 5. [MODULE_5_NAME] (`[MODULE_5_PATH]/`)
+## Configuration
 
-- [MODULE_5_FEATURE_1]
-- [MODULE_5_FEATURE_2]
-- [MODULE_5_FEATURE_3]
-- [MODULE_5_FEATURE_4]
+### Build ([BUILD_TOOL])
 
-### Reusable Components (`[COMPONENTS_DIR]/`)
+<!-- Key build configuration -->
 
-- **[COMPONENT_1]**: [COMPONENT_1_DESCRIPTION]
-- **[COMPONENT_2]**: [COMPONENT_2_DESCRIPTION]
-- **[COMPONENT_3]**: [COMPONENT_3_DESCRIPTION]
-- **[COMPONENT_4]**: [COMPONENT_4_DESCRIPTION]
-- **[COMPONENT_5]**: [COMPONENT_5_DESCRIPTION]
+- Entry: `[ENTRY_POINT]`
+- Output: `[OUTPUT_DIR]/`
+- Dev server: [DEV_SERVER_INFO] <!-- Example: port 3000, HMR enabled -->
+- [SPECIAL_CONFIG]: [DESCRIPTION] <!-- Example: Module Federation for microfrontend -->
 
-## 🔄 Data Flow
+### TypeScript
 
-### [DATA_FLOW_PATTERN]
+- Target: [TARGET] <!-- Example: ES2020 -->
+- Module: [MODULE] <!-- Example: ESNext -->
+- Strict mode: [ENABLED/DISABLED]
 
-```
-[DATA_FLOW_DIAGRAM]
-```
+### Testing ([TEST_FRAMEWORK])
 
-### [DATA_MANAGEMENT_SYSTEM]:
+- Environment: [ENV] <!-- Example: jsdom -->
+- Setup: `[SETUP_FILE]` <!-- Example: testSetup.ts -->
+- Mocks: `[MOCKS_DIR]/` <!-- Example: src/__mocks__/ -->
+- Coverage threshold: [THRESHOLD]% <!-- Example: 80% -->
 
-- **[DATA_COMPONENT_1]**: [DATA_COMPONENT_1_DESCRIPTION]
-- **[DATA_COMPONENT_2]**: [DATA_COMPONENT_2_DESCRIPTION]
-- **[DATA_COMPONENT_3]**: [DATA_COMPONENT_3_DESCRIPTION]
-- **[DATA_COMPONENT_4]**: [DATA_COMPONENT_4_DESCRIPTION]
+---
 
-### [SELECTORS_OR_QUERIES]
+## Key Architectural Patterns
 
-- [SELECTOR_FEATURE_1]
-- [SELECTOR_FEATURE_2]
-- [SELECTOR_FEATURE_3]
+<!-- Document project-specific patterns -->
 
-## 🛠️ Development Tools
+### [PATTERN_1_NAME]
 
-### [PACKAGE_MANAGER] Commands
+[PATTERN_1_DESCRIPTION]
+
+<!-- Example:
+### Create → Edit → Preview Flow
+Standard CRUD flow for all entities:
+CREATE PAGE → EDIT PAGE → PREVIEW PAGE (read-only + actions)
+-->
+
+### [PATTERN_2_NAME]
+
+[PATTERN_2_DESCRIPTION]
+
+---
+
+## External Integrations
+
+<!-- If applicable -->
+
+| Integration     | Purpose   | Config Location |
+| --------------- | --------- | --------------- |
+| [INTEGRATION_1] | [PURPOSE] | [PATH]          |
+| [INTEGRATION_2] | [PURPOSE] | [PATH]          |
+
+---
+
+## Maintenance
+
+### When to Update This File
+
+- New directory added to `[SOURCE_FOLDER]/`
+- New alias added to tsconfig.json
+- NPM script added/changed
+- Architectural pattern introduced
+
+### Verification Commands
 
 ```bash
-[DEV_COMMAND]             # [DEV_DESCRIPTION]
-[BUILD_COMMAND]           # [BUILD_DESCRIPTION]
-[TEST_COMMAND]            # [TEST_DESCRIPTION]
-[LINT_COMMAND]            # [LINT_DESCRIPTION]
-[FORMAT_COMMAND]          # [FORMAT_DESCRIPTION]
-[START_COMMAND]           # [START_DESCRIPTION]
-[ADDITIONAL_COMMANDS]     # [ADDITIONAL_DESCRIPTIONS]
+# Verify structure matches documentation
+ls [SOURCE_FOLDER]/
+ls [SOURCE_FOLDER]/components/
+ls [SOURCE_FOLDER]/pages/
+
+# Check aliases
+cat tsconfig.json | grep "paths" -A 20
+
+# List scripts
+cat package.json | grep "scripts" -A 30
 ```
 
-### [DEVELOPMENT_SERVER_NAME] (`[DEV_SERVER_PATH]/`)
+### Sync Checklist
 
-- [DEV_SERVER_FEATURE_1]
-- [DEV_SERVER_FEATURE_2]
-- [DEV_SERVER_FEATURE_3]
-- [DEV_SERVER_FEATURE_4]
-
-## 🧪 Testing
-
-### Test Structure
-
-- **[TEST_TYPE_1]**: `[TEST_PATTERN_1]`
-- **[TEST_TYPE_2]**: `[TEST_PATTERN_2]`
-- **[TEST_TYPE_3]**: `[TEST_PATTERN_3]`
-- **[TEST_TYPE_4]**: `[TEST_PATTERN_4]`
-
-### Code Coverage
-
-- Minimum threshold: [COVERAGE_PERCENTAGE]%
-- Exclusions: [COVERAGE_EXCLUSIONS]
-- [COVERAGE_REPORT_FORMATS] reports
-
-## 🎨 Styles and UI
-
-### [STYLES_ARCHITECTURE] Architecture
-
-```
-[STYLES_DIR]/
-├── [STYLES_CONFIG_FILE]     # [STYLES_CONFIG_DESCRIPTION]
-├── [GLOBAL_STYLES_FILE]     # [GLOBAL_STYLES_DESCRIPTION]
-├── [MIXINS_FILE]           # [MIXINS_DESCRIPTION]
-├── [TYPOGRAPHY_FILE]       # [TYPOGRAPHY_DESCRIPTION]
-└── [STYLES_ENTRY_FILE]     # [STYLES_ENTRY_DESCRIPTION]
-```
-
-### [UI_LIBRARY] ([UI_LIBRARY_VERSION])
-
-- [UI_LIBRARY_FEATURE_1]
-- [UI_LIBRARY_FEATURE_2]
-- [UI_LIBRARY_FEATURE_3]
-- [UI_LIBRARY_FEATURE_4]
-
-## 🔗 External Dependencies
-
-### Main Libraries
-
-- **[MAIN_LIB_1]**: [MAIN_LIB_1_DESCRIPTION]
-- **[MAIN_LIB_2]**: [MAIN_LIB_2_DESCRIPTION]
-- **[MAIN_LIB_3]**: [MAIN_LIB_3_DESCRIPTION]
-- **[MAIN_LIB_4]**: [MAIN_LIB_4_DESCRIPTION]
-- **[MAIN_LIB_5]**: [MAIN_LIB_5_DESCRIPTION]
-- **[MAIN_LIB_6]**: [MAIN_LIB_6_DESCRIPTION]
-
-### Dev Dependencies
-
-- **[DEV_LIB_1]**: [DEV_LIB_1_DESCRIPTION]
-- **[DEV_LIB_2]**: [DEV_LIB_2_DESCRIPTION]
-- **[DEV_LIB_3]**: [DEV_LIB_3_DESCRIPTION]
-- **[DEV_LIB_4]**: [DEV_LIB_4_DESCRIPTION]
-- **[DEV_LIB_5]**: [DEV_LIB_5_DESCRIPTION]
-
-## 📊 Metrics and Monitoring
-
-### Project Size
-
-- ~[FILES_COUNT]+ files in [SOURCE_DIR]/
-- ~[API_ROUTES_COUNT]+ [API_INFO]
-- ~[COVERAGE_PERCENT]% test coverage
-- [LANGUAGE_SPECIFIC_INFO]
-
-### Performance
-
-- [PERFORMANCE_FEATURE_1]
-- [PERFORMANCE_FEATURE_2]
-- [PERFORMANCE_FEATURE_3]
-- [PERFORMANCE_FEATURE_4]
-
-## 🚨 Important Development Notes
-
-### Architectural Constraints
-
-1. **[LIMITATION_1]**: [LIMITATION_1_DESCRIPTION]
-2. **[LIMITATION_2]**: [LIMITATION_2_DESCRIPTION]
-3. **[LIMITATION_3]**: [LIMITATION_3_DESCRIPTION]
-4. **[LIMITATION_4]**: [LIMITATION_4_DESCRIPTION]
-
-### Integration Points
-
-- **[INTEGRATION_1]**: [INTEGRATION_1_DESCRIPTION]
-- **[INTEGRATION_2]**: [INTEGRATION_2_DESCRIPTION]
-- **[INTEGRATION_3]**: [INTEGRATION_3_DESCRIPTION]
-- **[INTEGRATION_4]**: [INTEGRATION_4_DESCRIPTION]
-
-### Critical Dependencies
-
-- **[CRITICAL_DEP_1]**: [CRITICAL_DEP_1_DESCRIPTION]
-- **[CRITICAL_DEP_2]**: [CRITICAL_DEP_2_DESCRIPTION]
-- **[CRITICAL_DEP_3]**: [CRITICAL_DEP_3_DESCRIPTION]
+- [ ] Path aliases match tsconfig.json
+- [ ] NPM scripts match package.json
+- [ ] Directory listings are current
+- [ ] Statistics are approximate but reasonable
 
 ---
 
-## 📝 Template Adaptation Instructions
-
-When adapting this template for a specific project:
-
-1. **Project Analysis**: Study folder structure, package.json, configuration files
-2. **Replace Placeholders**: Replace all values in square brackets `[...]` with actual values
-3. **Remove Irrelevant**: Remove sections that don't apply to the project
-4. **Add Specific**: Add unique project architecture features
-5. **Update Commands**: Ensure all commands and paths are correct
-6. **Verify Structure**: Cross-check with actual file structure of the project
-
-The document should be:
-
-- **Accurate** - reflect the actual project structure
-- **Complete** - cover all key architecture components
-- **Current** - match the current state of the codebase
-- **Navigational** - help quickly orient within the project
-
----
-
-> **Note**: This document serves as a navigation map for AI agents and developers. When making architectural changes, update the corresponding sections.
+> **Note**: This document is a navigation aid. Keep it accurate but don't over-document. Update when architecture changes, not for every file addition.

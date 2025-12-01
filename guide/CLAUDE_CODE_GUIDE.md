@@ -1,98 +1,184 @@
-A Brief Guide to Setting Up Claude Code from Scratch and How to Use It Effectively for Acceptable Results (80-90% Success Rate)
+# Claude Code Setup Guide
 
-1. First, take the CLAUDE_TEMPLATE_EN.md file and place it in your project directory. Rename it to CLAUDE.md, then run Claude Code with the prompt: "Fill in all placeholders in @CLAUDE.md to match my project. Follow the template principles KISS, Occam's razor, DRY, YAGNI". This file is attached to every request and, according to developers, is designed to reduce misunderstanding and enrich queries with project context. In reality - Claude Code very often IGNORES this file or forgets it very quickly as the context grows and eventually starts acting strange (time to create a new chat).
+A practical guide for setting up Claude Code and achieving 80-90% success rate on development tasks.
 
-I created a template for PROJECT_STRUCTURE.md (speeds up project understanding and reduces time for "searching" files and functions)
-Prompt for it:
-"Analyze my project structure and create PROJECT_STRUCTURE.md file based on the
-PROJECT_STRUCTURE_TEMPLATE.md template. Replace all placeholders in square brackets [PLACEHOLDER] with actual
-project data:
+## Quick Start
 
-1. **Study file structure** - use ls, tree commands to analyze folders
-2. **Analyze configurations** - study package.json, tsconfig.json, webpack.config.js and other
-   configuration files
-3. **Determine architecture** - identify main modules, components, entry points
-4. **Find dependencies** - main and dev libraries from package.json
-5. **Study commands** - scripts from package.json
-6. **Identify features** - unique architecture characteristics of the project
+### Step 1: Create CLAUDE.md
 
-**Replace all placeholders:**
+Copy `CLAUDE_TEMPLATE_EN.md` to your project root as `CLAUDE.md`, then run:
 
-- [PROJECT_NAME] → real project name
-- [ARCHITECTURE_TYPE] → architecture type (SPA, MPA, etc)
-- [MAIN_STACK] → main technology stack
-- [SOURCE_FOLDER] → source code folder
-- [ENTRY_POINT] → application entry point
-- And all other [PLACEHOLDER] values
+```
+Fill in all placeholders in @CLAUDE.md to match my project. Follow KISS, Occam's razor, DRY, YAGNI principles.
+```
 
-**Result should be:**
-✅ Accurate - reflect real structure
-✅ Complete - cover all key components
-✅ Current - match current state
-✅ Navigational - help navigate the project
+### Step 2: Create PROJECT_STRUCTURE.md
 
-Follow KISS, DRY, YAGNI principles - remove non-applicable sections, add only necessary." (see attached file)
+Use `PROJECT_STRUCTURE_TEMPLATE_EN.md` as base:
 
-2. You need to configure agents. Place them in the /agents folder where you have Claude installed (find this yourself, for me it's ~./claude which corresponds to the User folder on macOS) (see link https://github.com/Kacep91/claude-agents)
+```
+Analyze my project structure and create PROJECT_STRUCTURE.md based on PROJECT_STRUCTURE_TEMPLATE_EN.md template.
 
-That's it, you're amazing and ready to create.
+1. Study file structure - use ls, tree commands
+2. Analyze configs - package.json, tsconfig.json, webpack.config.js
+3. Determine architecture - main modules, components, entry points
+4. Find dependencies - from package.json
+5. Study commands - scripts from package.json
+6. Identify unique features
 
-We have three types of tasks for which we use AI:
+Follow KISS, DRY, YAGNI - remove non-applicable sections.
+```
 
-1. Simple tasks (processing large amounts of similar files, creating applications from scratch, creating websites from scratch, minor edits (text changes, replacing components with others (when migrating to a new UI library, for example), documentation fixes, etc.))
-2. Medium tasks (creating new features from scratch, bug fixes that you already know how to fix/know approximately where to look and just need to implement, bug fixes in features covered by quality tests)
-3. Complex tasks (create "bug-free" applications :D, fix bugs so nothing breaks (no test coverage), add large features that affect multiple components and files (i18n implementation from scratch), etc.)
+### Step 3: Configure Agents
 
-For the first type, we either write a script in our favorite programming language with AI help and it processes huge document arrays. Example: converting a hefty swagger.json into understandable documentation with separation (PRD) and then creating APIs based on this documentation (file weighed 560KB), or we describe in detail the main user-stories and user-cases for the application, for example:
+Place agent files from `/agents/` folder in your Claude config directory (`~/.claude/agents/` on macOS).
 
-Create a plan for EVERY STAGE that implements each stage of this scenario:
+---
 
-Stage 1:
+## CLAUDE.md Best Practices
 
-1. User sends 5 links to hotels they liked. Links can be in any format and to any site, as long as it's clear these are hotels. Or it can just be text - hotel name.
-2. We search for these hotels with maximum accuracy on Booking.com and TripAdvisor, using Perplexity API. We input hotel names or user links. Need a good prompt that will allow maximum quality data extraction from user input. If these are booking/tripadvisor links - we search directly by links. For example, we have 2 hotels as input, each with tripAdvisor link. We should find the hotel link on booking.com and proceed to parsing. In Perplexity response we need to get exact name and link to navigate and start parsing
-   Stage 2:
-3. Check if such hotel already exists in our DB - if yes, make a query there and output everything as in point 10
-4. From each found hotel we need to parse first 400 reviews, starting with the freshest (already done, see TripAdvisorParser, BookingParser). Need to add parallel parsing mode for 5 hotels, maintaining anti-detection mode for our bot.
-   Stage 3:
-5. We form structured JSON with reviews, advantages and disadvantages by key parameters for user for each hotel (extract all available information from the page) (already done, see JSONExporter)
-6. Save the obtained JSON with hotel name and all fields filled in the database.
-7. We send the formed JSON for processing to GEMINI (or Perplexity — will be decided later) with a prompt to choose the best hotel, individually optimal for the user, considering their preferences (response should be in English text format).
-   Stage 4:
-8. Get system output
-   Add to our DB for this hotel information with AI analysis (additional column)
-   Add to our DB the generated xlsx file
+### Essential Sections
 
-In the second case, we use either plan mode in Claude Code (if not too complex in our opinion), or full flow with agents. You have two options:
+| Section | Purpose | Example |
+|---------|---------|---------|
+| **Project Stack** | Tech overview | React 18, TypeScript, Redux |
+| **Architecture** | Key patterns | Module Federation, Microservices |
+| **Commands** | Dev workflows | `npm start`, `npm test` |
+| **Code Standards** | Quality rules | No `any`, strict typing |
+| **Constraints** | What to avoid | No console.log in prod |
 
-Option 1 (Standard flow):
-Write your prompt and add: "First, use scanner to gather information and then use project-planner to make up the plan"
-- Scanner subagents will search, analyze, collect and extract information from code and the internet
-- Project-planner subagent will create thorough step-by-step plans with maximum details and phases
-- Multiple, simultaneous, parallel worker subagents will execute the plan
+### Keep It Effective
 
-Option 2 (Plan mode flow):
-Write your prompt in PLAN MODE and add: "First, use scanner to gather information needed and then create a plan with to-do for all workers"
-- Scanner subagents will gather all necessary information
-- You create the plan with to-do items directly (without project-planner)
-- Worker subagents execute based on the to-do plan
+**DO:**
+- Keep under 500 lines
+- Update when architecture changes
+- Include actual command examples
+- List critical constraints
 
+**DON'T:**
+- Document every file
+- Include stale information
+- Over-explain obvious patterns
+- Duplicate package.json content
+
+### Maintenance
+
+Claude Code may ignore CLAUDE.md as context grows. When behavior becomes erratic:
+1. Start new chat session
+2. Reference CLAUDE.md explicitly in complex prompts
+3. Keep file focused and current
+
+---
+
+## Task Classification
+
+### Simple Tasks (1-2 steps)
+Processing similar files, minor edits, text changes, docs fixes.
+
+**Approach:** Direct prompt, no agents needed.
+
+### Medium Tasks (3-5 steps)
+New features, known bug fixes, feature additions.
+
+**Approach:** Use workflow flows below.
+
+### Complex Tasks (5+ steps)
+Large features, multi-component changes, architecture work.
+
+**Approach:** Break into stages, use PRD → Scanner → Planner → Worker → Auditor flow.
+
+---
+
+## Workflow Selection
+
+### Standard Flow (Most Common)
+```
+Scanner → Planner → Worker
+```
+
+Prompt addition: `"First, use scanner to gather information and then use planner to make a plan"`
+
+### Plan Mode Flow (More Control)
+```
+Scanner → Plan Mode → Worker
+```
+
+Prompt addition: `"First, use scanner to gather information, then create a plan with to-do for all workers"`
+
+### Token-Efficient Flow
+```
+Scanner (Sonnet) → Planner (Opus) → Worker (Sonnet)
+```
+
+Use when context length is a concern.
+
+### ULTRATHINK (Complex Projects)
+```
+Multiple Scanners (parallel) → Single Planner → Multiple Workers (parallel) → Auditor
+```
+
+Use for large-scale refactoring or multi-component features.
+
+---
+
+## Agent Reference
+
+| Agent | Model | Use Case |
+|-------|-------|----------|
+| **Scanner** | Sonnet | Gather info, find files, research |
+| **Architect** | Sonnet | Design, evaluate architecture |
+| **Planner** | Opus | Strategic planning, task breakdown |
+| **PRD Writer** | Sonnet | Requirements documentation |
+| **Worker** | Opus | Implementation, code execution |
+| **Refactor** | Sonnet | Modularize files >500 lines |
+| **Auditor** | Sonnet | Verify, test, quality check |
+
+---
+
+## Prompt Patterns
+
+### Bug Fix
+```
 ULTRATHINK
 
-@src/components/BullshitComponent/index.tsx
-@src/components/BullshitComponents/Bullshitselector.tsx
+@path/to/component.tsx
+@path/to/related-file.tsx
 
-In my {componentName} component, the BullshitSelector component is not working. It currently works like this:
+In {ComponentName}, the {Feature} is not working. Currently:
+1. [Actual behavior]
+2. [Expected behavior]
 
-1. When selecting all parameters and clicking "Add" button in modal window - it adds new value to the form (selected parameter)
-2. Then, if I create a new BullshitSelector with "add new entity" button, when adding a new value to the form, this value REPLACES the previous one
+Need to fix so that [desired outcome].
+```
 
-Need to make it so that if we have more than one Bullshitselector, each selected parameter is ADDED to the previous one, not REPLACES it
+### New Feature
+```
+Create a plan for implementing [feature]:
 
-So we described the flow, added links, described the problem, described actual and expected behavior and launch the AI
+Stage 1:
+1. [Step 1]
+2. [Step 2]
 
-In this case, it will analyze the code, find all necessary information, launch the planner, make a plan, then launch worker agents to speed up development and start writing code according to the plan
+Stage 2:
+3. [Step 3]
+4. [Step 4]
 
-In the third case, we first write what we want as in point two (stages). Then we ask AI to break this into stages (using prd-writer agent), then according to this plan with stages we create a detailed plan for stage 1 following the scheme (scanner => planner => worker => auditor) and so on with each stage. This way, we break large tasks into smaller tasks, carefully plan each one and execute them sequentially (similar to spec-driven approach from Kiro)
+First use scanner to gather information, then create a detailed plan.
+```
 
-There won't be an example here, since the flow is described in general (We describe in maximum detail what we want ourselves, then ask prd-agent to study what we wrote and create prd.md file and then unleash our scanner-planner-worker-auditor flow on the prd.md file with a request to plan the first/second/third stages)
+### Large Task (PRD Approach)
+1. Describe requirements in detail
+2. Ask PRD Writer to create `prd.md`
+3. Execute stages sequentially with Scanner → Planner → Worker → Auditor
+
+---
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Agent ignores CLAUDE.md | Start new session, reference explicitly |
+| Wrong files modified | Be specific with @file references |
+| Incomplete implementation | Break into smaller tasks |
+| Context overflow | Use token-efficient flow |
+| Erratic behavior | Check CLAUDE.md freshness, restart session |
